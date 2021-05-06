@@ -3,6 +3,7 @@ const moment = require('moment');
 const cron = require('node-cron');
 const axios = require('axios');
 const notifier = require('./notifier');
+let searchCount = 0;
 /**
 Step 1) Enable application access on your gmail with steps given here:
  https://support.google.com/accounts/answer/185833?p=InvalidSecondFactor&visit_id=637554658548216477-2576856839&rd=1
@@ -17,6 +18,7 @@ To close the app, run: pm2 stop vaccineNotifier.js && pm2 delete vaccineNotifier
 const PINCODE = process.env.PINCODE
 const EMAIL = process.env.EMAIL
 const AGE = process.env.AGE
+const districtId = process.env.DISTRICT_ID
 
 async function main(){
     try {
@@ -36,11 +38,12 @@ async function checkAvailability() {
         getSlotsForDate(date);
     })
 }
-
+// https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id=150&date=07-05-2021
 function getSlotsForDate(DATE) {
+    ++searchCount;
     let config = {
         method: 'get',
-        url: 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=' + PINCODE + '&date=' + DATE,
+        url: 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id=' + districtId + '&date=' + DATE,
         headers: {
             'accept': 'application/json',
             'Accept-Language': 'hi_IN'
@@ -51,7 +54,7 @@ function getSlotsForDate(DATE) {
         .then(function (slots) {
             let sessions = slots.data.sessions;
             let validSlots = sessions.filter(slot => slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
-            console.log({date:DATE, validSlots: validSlots.length})
+            console.log({searchCount,date:DATE, validSlots: validSlots.length})
             if(validSlots.length > 0) {
                 notifyMe(validSlots);
             }
