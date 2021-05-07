@@ -52,9 +52,10 @@ function getSlotsForDate(DATE) {
 
     axios(config)
         .then(function (slots) {
-            let sessions = slots.data.sessions;
+            let sessions = slots.data.centers;
+            console.log(sessions);
             let validSlots = sessions.filter(slot => slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
-            console.log({searchCount,date:DATE, validSlots: validSlots.length})
+            console.log({date:DATE, validSlots: validSlots.length})
             if(validSlots.length > 0) {
                 notifyMe(validSlots);
             }
