@@ -46,15 +46,23 @@ function getSlotsForDate(DATE) {
         url: 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id=' + districtId + '&date=' + DATE,
         headers: {
             'accept': 'application/json',
-            'Accept-Language': 'hi_IN'
+            'Accept-Language': 'hi_IN',
+            'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJlMTNmOTIxZi1hMWI1LTQ3NGQtYWIxNy00OWFmMjVhYzJiMWUiLCJ1c2VyX2lkIjoiZTEzZjkyMWYtYTFiNS00NzRkLWFiMTctNDlhZjI1YWMyYjFlIiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5NTE4MTA2MTM4LCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjg1NTkyNjMzODMxNjYwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwidWEiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTAuMC40NDMwLjkzIFNhZmFyaS81MzcuMzYiLCJkYXRlX21vZGlmaWVkIjoiMjAyMS0wNS0wN1QxMTo0MDozNS4xMzJaIiwiaWF0IjoxNjIwMzg3NjM1LCJleHAiOjE2MjAzODg1MzV9.kR9WnpKxVZxpkUFz7avMrTaYlQLA5tl38IXHWBgzKXk'
         }
     };
 
     axios(config)
         .then(function (slots) {
-            let sessions = slots.data.centers;
-            console.log(sessions);
-            let validSlots = sessions.filter(slot => slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
+            let centers = slots.data.centers;
+
+            let validSlots = centers.filter(center =>{
+                console.log(center.center_id,center.name,center.address,center.sessions[0].available_capacity);
+                for(let slot  of center.sessions){
+                    if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
+                       return true;
+                }
+            })
+            console.log(validSlots);
             console.log({date:DATE, validSlots: validSlots.length})
             if(validSlots.length > 0) {
                 notifyMe(validSlots);
