@@ -5,6 +5,8 @@ let nodemailerTransporter = nodemailer.createTransport({
     auth: {
         user: String(process.env.EMAIL),
         pass: String(process.env.APPLICATION_PASSWORD)
+    }, tls: {
+        rejectUnauthorized: false
     }
 });
 
