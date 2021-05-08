@@ -38,7 +38,7 @@ async function checkAvailability() {
         getSlotsForDate(date);
     })
 }
-// https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id=150&date=07-05-2021
+
 function getSlotsForDate(DATE) {
     ++searchCount;
     let config = {
@@ -47,7 +47,7 @@ function getSlotsForDate(DATE) {
         headers: {
             'accept': 'application/json',
             'Accept-Language': 'hi_IN',
-            //'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJlMTNmOTIxZi1hMWI1LTQ3NGQtYWIxNy00OWFmMjVhYzJiMWUiLCJ1c2VyX2lkIjoiZTEzZjkyMWYtYTFiNS00NzRkLWFiMTctNDlhZjI1YWMyYjFlIiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5NTE4MTA2MTM4LCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjg1NTkyNjMzODMxNjYwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwidWEiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTAuMC40NDMwLjkzIFNhZmFyaS81MzcuMzYiLCJkYXRlX21vZGlmaWVkIjoiMjAyMS0wNS0wN1QxMTo0MDozNS4xMzJaIiwiaWF0IjoxNjIwMzg3NjM1LCJleHAiOjE2MjAzODg1MzV9.kR9WnpKxVZxpkUFz7avMrTaYlQLA5tl38IXHWBgzKXk'
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
         }
     };
 
