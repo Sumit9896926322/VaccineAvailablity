@@ -53,6 +53,7 @@ function getSlotsForDate(DATE) {
 
     axios(config)
         .then(function (slots) {
+<<<<<<< HEAD
             let centers = slots.data.centers;
 
             let validSlots = centers.filter(center =>{
@@ -65,6 +66,13 @@ function getSlotsForDate(DATE) {
             console.log(validSlots);
             console.log({date:DATE, validSlots: validSlots.length})
             if(validSlots.length > 0) {
+=======
+            let sessions = slots.data.sessions;
+            let validSlots = sessions.filter(slot => slot.min_age_limit <= AGE && slot.available_capacity > 0)
+            console.log({ date: DATE, validSlots: validSlots.length })
+            if (validSlots.length > 0) {
+                console.log("Valid vaccination slot(s) found for user " + process.env.EMAIL + ", sending an email")
+>>>>>>> 7f74111 (watch pm2)
                 notifyMe(validSlots);
             }
         })
