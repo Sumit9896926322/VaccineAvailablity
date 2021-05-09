@@ -56,7 +56,7 @@ function getSlotsForDate(DATE) {
             let centers = slots.data.centers;
 
             let validSlots = centers.filter(center =>{
-                console.log(center.center_id,center.name,center.address,center.sessions[0].available_capacity);
+
                 for(let slot  of center.sessions){
                     if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
                        return true;
@@ -65,11 +65,14 @@ function getSlotsForDate(DATE) {
             console.log(validSlots);
             console.log({date:DATE, validSlots: validSlots.length})
             if(validSlots.length > 0) {
+                player.play('buzz.mp3', function(err){
+                    if (err) throw err
+                })
                 notifyMe(validSlots);
             }
         })
         .catch(function (error) {
-            console.log(error);
+            console.log("Error happened" );
         });
 }
 
