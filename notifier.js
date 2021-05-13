@@ -19,6 +19,7 @@ exports.sendEmail = function (email, subjectLine, slotDetails, callback) {
         text: 'Vaccine available. Details: \n\n' + slotDetails
     };
     nodemailerTransporter.sendMail(options, (error, info) => {
+        console.log(eror);
         if (error) {
             return callback(error);
         }
