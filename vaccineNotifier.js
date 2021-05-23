@@ -54,10 +54,9 @@ function getSlotsForDate(DATE) {
     axios(config)
         .then(function (slots) {
             let centers = slots.data.centers;
-
             let validSlots = centers.filter(center =>{
                 for(let slot  of center.sessions){
-                    if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0)
+                    if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0 && slot.vaccine === "COVAXIN")
                        return true;
                 }
             })
