@@ -56,7 +56,7 @@ function getSlotsForDate(DATE) {
             let centers = slots.data.centers;
             let validSlots = centers.filter(center =>{
                 for(let slot  of center.sessions){
-                    if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0 && slot.vaccine === "COVAXIN")
+                    if(slot.min_age_limit <= AGE &&  slot.available_capacity > 0 && slot.vaccine === "COVAXIN" && slot.available_capacity_dose2 > 0)
                        return true;
                 }
             })
