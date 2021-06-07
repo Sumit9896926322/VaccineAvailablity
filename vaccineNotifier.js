@@ -47,7 +47,8 @@ function getSlotsForDate(DATE) {
         headers: {
             'accept': 'application/json',
             'Accept-Language': 'hi_IN',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+            'authorization':' Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI2YTA2ZWU5Mi1jZWRhLTRlNWItOTY0Mi0wM2M3Y2I3MWE5YjQiLCJ1c2VyX2lkIjoiNmEwNmVlOTItY2VkYS00ZTViLTk2NDItMDNjN2NiNzFhOWI0IiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5NTE4MTA2MTM4LCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjgyMzQ1MjQ1MTAxMDMwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwic291cmNlIjoiY293aW4iLCJ1YSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS85MS4wLjQ0NzIuNzcgU2FmYXJpLzUzNy4zNiIsImRhdGVfbW9kaWZpZWQiOiIyMDIxLTA2LTA3VDE5OjAzOjQ0LjI0NFoiLCJpYXQiOjE2MjMwOTI2MjQsImV4cCI6MTYyMzA5MzUyNH0.diNhua-XMH4d3GZWQO65y89xhAVyzuMGfD9HEOHybpo',
         }
     };
 
